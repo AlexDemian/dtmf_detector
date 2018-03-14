@@ -1,7 +1,7 @@
 #cython: boundscheck=False, wraparound=False, nonecheck=False
 import numpy as np
 
-def vz_goertzel(long[:] chunk, double[:] coeff):
+def goertzel(long[:] chunk, double[:] coeff):
         cdef int N, M, ii, jj
         N = chunk.shape[0]
         M = 8 #coeff.shape[0]

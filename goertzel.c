@@ -518,8 +518,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__goertzel
-#define __PYX_HAVE_API__goertzel
+#define __PYX_HAVE__cython_goertzel
+#define __PYX_HAVE_API__cython_goertzel
 #include "pythread.h"
 #include <string.h>
 #include <stdlib.h>
@@ -1519,7 +1519,7 @@ static PyObject *__pyx_memoryview_assign_item_from_object(struct __pyx_memoryvie
 static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
 static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
 
-/* Module declarations from 'goertzel' */
+/* Module declarations from 'cython_goertzel' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1566,11 +1566,11 @@ static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "goertzel"
-extern int __pyx_module_is_main_goertzel;
-int __pyx_module_is_main_goertzel = 0;
+#define __Pyx_MODULE_NAME "cython_goertzel"
+extern int __pyx_module_is_main_cython_goertzel;
+int __pyx_module_is_main_cython_goertzel = 0;
 
-/* Implementation of 'goertzel' */
+/* Implementation of 'cython_goertzel' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_MemoryError;
@@ -1642,7 +1642,6 @@ static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_vz_goertzel[] = "vz_goertzel";
 static const char __pyx_k_goertzel_pyx[] = "goertzel.pyx";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
@@ -1650,6 +1649,7 @@ static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
+static const char __pyx_k_cython_goertzel[] = "cython_goertzel";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
@@ -1710,6 +1710,7 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_coeff;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
+static PyObject *__pyx_n_s_cython_goertzel;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_dtype_is_object;
 static PyObject *__pyx_n_s_encode;
@@ -1775,9 +1776,8 @@ static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_n_s_vz_goertzel;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_8goertzel_vz_goertzel(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_chunk, __Pyx_memviewslice __pyx_v_coeff); /* proto */
+static PyObject *__pyx_pf_15cython_goertzel_goertzel(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_chunk, __Pyx_memviewslice __pyx_v_coeff); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -1860,20 +1860,20 @@ static PyObject *__pyx_codeobj__28;
 /* "goertzel.pyx":4
  * import numpy as np
  * 
- * def vz_goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
+ * def goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
  *         cdef int N, M, ii, jj
  *         N = chunk.shape[0]
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8goertzel_1vz_goertzel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_8goertzel_1vz_goertzel = {"vz_goertzel", (PyCFunction)__pyx_pw_8goertzel_1vz_goertzel, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8goertzel_1vz_goertzel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_15cython_goertzel_1goertzel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_15cython_goertzel_1goertzel = {"goertzel", (PyCFunction)__pyx_pw_15cython_goertzel_1goertzel, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_15cython_goertzel_1goertzel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_chunk = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_coeff = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("vz_goertzel (wrapper)", 0);
+  __Pyx_RefNannySetupContext("goertzel (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_chunk,&__pyx_n_s_coeff,0};
     PyObject* values[2] = {0,0};
@@ -1897,11 +1897,11 @@ static PyObject *__pyx_pw_8goertzel_1vz_goertzel(PyObject *__pyx_self, PyObject 
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_coeff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("vz_goertzel", 1, 2, 2, 1); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("goertzel", 1, 2, 2, 1); __PYX_ERR(0, 4, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "vz_goertzel") < 0)) __PYX_ERR(0, 4, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "goertzel") < 0)) __PYX_ERR(0, 4, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1914,20 +1914,20 @@ static PyObject *__pyx_pw_8goertzel_1vz_goertzel(PyObject *__pyx_self, PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("vz_goertzel", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 4, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("goertzel", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 4, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("goertzel.vz_goertzel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_goertzel.goertzel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8goertzel_vz_goertzel(__pyx_self, __pyx_v_chunk, __pyx_v_coeff);
+  __pyx_r = __pyx_pf_15cython_goertzel_goertzel(__pyx_self, __pyx_v_chunk, __pyx_v_coeff);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8goertzel_vz_goertzel(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_chunk, __Pyx_memviewslice __pyx_v_coeff) {
+static PyObject *__pyx_pf_15cython_goertzel_goertzel(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_chunk, __Pyx_memviewslice __pyx_v_coeff) {
   int __pyx_v_N;
   int __pyx_v_M;
   int __pyx_v_ii;
@@ -1964,10 +1964,10 @@ static PyObject *__pyx_pf_8goertzel_vz_goertzel(CYTHON_UNUSED PyObject *__pyx_se
   Py_ssize_t __pyx_t_24;
   Py_ssize_t __pyx_t_25;
   Py_ssize_t __pyx_t_26;
-  __Pyx_RefNannySetupContext("vz_goertzel", 0);
+  __Pyx_RefNannySetupContext("goertzel", 0);
 
   /* "goertzel.pyx":6
- * def vz_goertzel(long[:] chunk, double[:] coeff):
+ * def goertzel(long[:] chunk, double[:] coeff):
  *         cdef int N, M, ii, jj
  *         N = chunk.shape[0]             # <<<<<<<<<<<<<<
  *         M = 8 #coeff.shape[0]
@@ -2364,7 +2364,7 @@ static PyObject *__pyx_pf_8goertzel_vz_goertzel(CYTHON_UNUSED PyObject *__pyx_se
   /* "goertzel.pyx":4
  * import numpy as np
  * 
- * def vz_goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
+ * def goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
  *         cdef int N, M, ii, jj
  *         N = chunk.shape[0]
  */
@@ -2377,7 +2377,7 @@ static PyObject *__pyx_pf_8goertzel_vz_goertzel(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-  __Pyx_AddTraceback("goertzel.vz_goertzel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_goertzel.goertzel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_s_prev, 1);
@@ -15320,7 +15320,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "goertzel.array", /*tp_name*/
+  "cython_goertzel.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -15428,7 +15428,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "goertzel.Enum", /*tp_name*/
+  "cython_goertzel.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -15678,7 +15678,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "goertzel.memoryview", /*tp_name*/
+  "cython_goertzel.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -15805,7 +15805,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "goertzel._memoryviewslice", /*tp_name*/
+  "cython_goertzel._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -15876,17 +15876,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_goertzel(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_cython_goertzel(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_goertzel},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_cython_goertzel},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "goertzel",
+    "cython_goertzel",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -15939,6 +15939,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_coeff, __pyx_k_coeff, sizeof(__pyx_k_coeff), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
+  {&__pyx_n_s_cython_goertzel, __pyx_k_cython_goertzel, sizeof(__pyx_k_cython_goertzel), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
@@ -16004,7 +16005,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
-  {&__pyx_n_s_vz_goertzel, __pyx_k_vz_goertzel, sizeof(__pyx_k_vz_goertzel), 0, 0, 1, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -16232,14 +16232,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "goertzel.pyx":4
  * import numpy as np
  * 
- * def vz_goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
+ * def goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
  *         cdef int N, M, ii, jj
  *         N = chunk.shape[0]
  */
   __pyx_tuple__20 = PyTuple_Pack(10, __pyx_n_s_chunk, __pyx_n_s_coeff, __pyx_n_s_N, __pyx_n_s_M, __pyx_n_s_ii, __pyx_n_s_jj, __pyx_n_s_s_prev, __pyx_n_s_prev_part, __pyx_n_s_s_prev2, __pyx_n_s_s); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_goertzel_pyx, __pyx_n_s_vz_goertzel, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_goertzel_pyx, __pyx_n_s_goertzel, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 4, __pyx_L1_error)
 
   /* "View.MemoryView":284
  *         return self.name
@@ -16324,11 +16324,11 @@ static int __Pyx_InitGlobals(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC initgoertzel(void); /*proto*/
-PyMODINIT_FUNC initgoertzel(void)
+PyMODINIT_FUNC initcython_goertzel(void); /*proto*/
+PyMODINIT_FUNC initcython_goertzel(void)
 #else
-PyMODINIT_FUNC PyInit_goertzel(void); /*proto*/
-PyMODINIT_FUNC PyInit_goertzel(void)
+PyMODINIT_FUNC PyInit_cython_goertzel(void); /*proto*/
+PyMODINIT_FUNC PyInit_cython_goertzel(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -16368,7 +16368,7 @@ bad:
 }
 
 
-static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
+static int __pyx_pymod_exec_cython_goertzel(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -16387,7 +16387,7 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
           Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_goertzel(void)", 0);
+  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_cython_goertzel(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -16423,7 +16423,7 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("goertzel", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("cython_goertzel", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -16442,14 +16442,14 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_goertzel) {
+  if (__pyx_module_is_main_cython_goertzel) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "goertzel")) {
-      if (unlikely(PyDict_SetItemString(modules, "goertzel", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "cython_goertzel")) {
+      if (unlikely(PyDict_SetItemString(modules, "cython_goertzel", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -16512,7 +16512,7 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
  * #cython: boundscheck=False, wraparound=False, nonecheck=False
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
- * def vz_goertzel(long[:] chunk, double[:] coeff):
+ * def goertzel(long[:] chunk, double[:] coeff):
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -16522,13 +16522,13 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
   /* "goertzel.pyx":4
  * import numpy as np
  * 
- * def vz_goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
+ * def goertzel(long[:] chunk, double[:] coeff):             # <<<<<<<<<<<<<<
  *         cdef int N, M, ii, jj
  *         N = chunk.shape[0]
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8goertzel_1vz_goertzel, NULL, __pyx_n_s_goertzel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_15cython_goertzel_1goertzel, NULL, __pyx_n_s_cython_goertzel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_vz_goertzel, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_goertzel, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "goertzel.pyx":1
@@ -16701,11 +16701,11 @@ static int __pyx_pymod_exec_goertzel(PyObject *__pyx_pyinit_module)
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init goertzel", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init cython_goertzel", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init goertzel");
+    PyErr_SetString(PyExc_ImportError, "init cython_goertzel");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

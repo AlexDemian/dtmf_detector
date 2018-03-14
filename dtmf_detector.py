@@ -5,8 +5,7 @@ import wave
 import math
 import numpy as np
 import re
-import glob
-from goertzel import vz_goertzel
+from cython_goertzel import goertzel
 
 # ~ SearchRules ~
 PAUSE = 0 # Fixed pause between 2 DTMF signals in seconds
@@ -100,7 +99,7 @@ class DTMFdetector():
 
             matches = []
             for index, chunk in enumerate(chunks):
-                matched = self.validate_signal(vz_goertzel(chunk, self.coeffs))
+                matched = self.validate_signal(goertzel(chunk, self.coeffs))
                 if matched:
                     cur_timepoint = start_frame*1./self.samplerate+index*self.chunk_duration
                     matches.append([cur_timepoint, matched])
@@ -132,7 +131,7 @@ class DTMFdetector():
         matched_signals, self.matched_keys = {}, []
 
         for index, chunk in enumerate(self.chunks):
-            powers = vz_goertzel(chunk, self.coeffs)
+            powers = goertzel(chunk, self.coeffs)
             matched = self.validate_signal(powers)
 
             if not matched:
@@ -148,27 +147,7 @@ class DTMFdetector():
         self.exec_time()
         return self.matched_keys
 
-for i in DTMFdetector('wav/RFM-DTMF2.wav').get_dtmfkeys():
-    print i
 
-#for f in sorted(glob.glob('wav/*.wav')):
-#    print f
-#    for i in DTMFdetector(f).get_dtmfkeys():
-#        print i
+for detected_key in DTMFdetector('sample.wav').get_dtmfkeys():
+    print detected_key
 
-
-
-#wav/RFM-DTMF.wav
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 68.168-68.488 s. Offset: 0.008 s.
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 69.064-69.384 s. Offset: 0.024 s.
-#wav/RFM-DTMF2.wav
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 226.088-226.408 s. Offset: 0.008 s.
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 226.992-227.312 s. Offset: 0.032 s.
-#Key: A21D(OPEN_KEY), dur: 0.32 at 10.36-10.68 s. Offset: 0.04 s.
-#wav/RFM-DTMF3.wav
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 204.44-204.76 s. Offset: 0.04 s.
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 205.368-205.688 s. Offset: 0.008 s.
-#wav/RFM-DTMF4.wav
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 114.824-115.144 s. Offset: 0.024 s.
-#Key: D12A(CLOSE_KEY), dur: 0.32 at 115.72-116.04 s. Offset: 0.04 s.
-#Key: A21D(OPEN_KEY), dur: 0.32 at 6.6-6.92 s. Offset: 0.04 s.
