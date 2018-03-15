@@ -1,5 +1,6 @@
 #! /usr/bin/python
 #-*- coding: utf-8 -*-
+import sys
 import time
 import wave
 import math
@@ -7,19 +8,10 @@ import numpy as np
 import re
 from cython_goertzel import goertzel
 
-# ~ SearchRules ~
-PAUSE = 0 # Fixed pause between 2 DTMF signals in seconds
-SIGNAL_DURATION = 0.08 # Duration per one DTMF signal in seconds
-LOUDER_COEFF = 2.5 # Times signal louder then AVG(power)
-
-# Search for
-def dtmf_keys():
-    #KEYNAME = KEYCHARS
-    OPEN_KEY = 'A21D'
-    CLOSE_KEY = 'D12A'
-    return locals()
-# ~ END of SearchRules ~
-
+with open('config.txt') as f:
+    for line in f.readlines():
+        if line[0] != '#' and '=' in line:
+            exec(line)
 
 class DTMFdetector():
     def __init__(self, filename):
@@ -65,13 +57,13 @@ class DTMFdetector():
     def catch_dtmfkeys(self, matched_signals):
         # Input structure: {second: [matched_char,....],}
         timing = sorted(matched_signals)
-        keys = dtmf_keys()
+
         MAX_MATCHES = 2
 
-        for key_name in keys:
-            chars_cnt = len(keys[key_name])
+        for key in KEYS:
+            chars_cnt = len(key)
             key_duration = SIGNAL_DURATION * chars_cnt + PAUSE * (chars_cnt - 1)
-            pattern = re.compile(''.join(['%s{1,%s}' % (char, MAX_MATCHES) for char in keys[key_name]]))
+            pattern = re.compile(''.join(['%s{1,%s}' % (char, MAX_MATCHES) for char in key]))
             chars_sequence = ''.join([matched_signals[timepoint][0] for timepoint in timing])
 
             tag_matches = pattern.finditer(chars_sequence)
@@ -80,10 +72,10 @@ class DTMFdetector():
                 matched_dur = round(end_sec - start_sec, 3)
 
                 if matched_dur == key_duration:
-                    self.matched_keys.append({'KEY': keys[key_name], 'time_from': start_sec, 'time_to': end_sec, 'offset': 0})
+                    self.matched_keys.append({'KEY': key, 'time_from': start_sec, 'time_to': end_sec, 'offset': 0})
 
                 else:
-                    res = self.catch_dtmfkeys_offset(start_sec, keys[key_name], key_duration)
+                    res = self.catch_dtmfkeys_offset(start_sec, key, key_duration)
                     if res:
                         self.matched_keys.append(res)
 
@@ -148,6 +140,6 @@ class DTMFdetector():
         return self.matched_keys
 
 
-for detected_key in DTMFdetector('sample.wav').get_dtmfkeys():
+for detected_key in DTMFdetector(sys.argv[1]).get_dtmfkeys():
     print detected_key
 

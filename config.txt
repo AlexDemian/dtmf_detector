@@ -1,0 +1,9 @@
+# Use '#' to make a comment string
+# Duration per one DTMF signal in seconds
+SIGNAL_DURATION = 0.08
+# Fixed pause between 2 DTMF signals in seconds
+PAUSE = 0
+# Times signal louder then AVG(power)
+LOUDER_COEFF = 2.5
+# Search for DTMF-sequences:
+KEYS = ['A21D','D12A']
