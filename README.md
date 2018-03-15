@@ -19,5 +19,8 @@ python setup.py build_ext --inplace
 # Usage:
 
 python dtfm_detector.py sample.wav
+
+# Configuration
+
 Modify config.txt so set up your searchrules
 
