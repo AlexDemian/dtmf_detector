@@ -1,4 +1,5 @@
-Simple tool for searching DTMF-keys in .wav audiofile based on cython Goertzel algorithm implementation.
+# Description:
+Simple tool for searching DTMF-sequences in .wav audiofile based on cython Goertzel algorithm implementation.
 Many thanks to Valentine Zaretsky for help in creation cython extension.
 
 Succesfully tested on mono .wav 8kHz recording 
@@ -11,8 +12,7 @@ Wave
 
 Cython(for recompilition)
 
-
-# For recompilition: 
+# Recompilition: 
 
 python setup.py build_ext --inplace
 
@@ -20,7 +20,7 @@ python setup.py build_ext --inplace
 
 python dtfm_detector.py sample.wav
 
-# Configuration
+# Configuration:
 
 Modify config.txt so set up your searchrules
 
